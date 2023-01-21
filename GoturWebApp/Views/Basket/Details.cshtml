@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Details";
+}
+@model Product
+@*
+<h1>@Model.Name </h1>
+<div>
+    <img src="@Model.PhotoLink" height="400" width="300"/>
+    <div class = "badge bg-danger" position = fixed bottom = "100px" right = "100px" ><center>
+        <h3> @Model.Price$</h3>
+     </center></div>
+</div>
+<div class = "btn-outline-secondary:hover" position = fixed bottom = "200px" right = "100px">
+    <a class="btn btn-outline-dark mt-auto" asp-controller="Basket" asp-action="AddToBasket" asp-route-id="@Model.ProductID">Add to cart</a>
+</div>*@
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">@Model.Name</h1>
+  
+    <!-- Portfolio Item Row -->
+    <div class="row">
+  
+      <div class="col-md-8">
+        <img class="img-fluid" src="@Model.PhotoLink" alt="">
+      </div>
+  
+      <div class="col-md-4">
+        <h3 class="my-3">Product Description</h3>
+        <p>@Model.Description</p>
+        <div class = "mt-3">
+            <h3>$@Model.Price</h3>
+        </div>
+        <div class = "btn-outline-secondary:hover mt-5">
+            <a class="btn btn-outline-dark mt-auto" asp-controller="Basket" asp-action="AddToBasket" asp-route-id="@Model.ProductID">Add to cart</a>
+        </div>
+      </div>
+  
+    </div>
+
+  </div>

@@ -1,0 +1,21 @@
+﻿@model Basket
+
+<form method="post" asp-action="Order">
+    <input asp-for="BasketID" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="test-primary">Confirm Ordering</h2>
+            <hr />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Confirm</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Cancel
+            </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

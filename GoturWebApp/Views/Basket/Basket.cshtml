@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Basket";
+}
+@using GoturWebApp.Controllers
+@using GoturWebApp.Models.ViewModels
+@model IEnumerable<ViewModelBasket> 
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Your Basket</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                <i class="bi bi-cart-plus"></i> &nbsp; Add a Product to Basket
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+
+    <table class = "table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model.Where(c => c.CustomerID == HomeController.loginedID))
+            {
+                <tr>
+                    <td class="text-center" width="50%">
+                        @obj.ProductName
+                    </td>
+                    <td class="text-center" width="30%">
+                        @obj.ProductPrice
+                    </td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a id="delete" href="@Url.Action("Delete",new {Id=@obj.ProductID})" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash3"></i> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row pt-1">
+        <div class="col-1 text-end">
+            <a asp-controller="Order" asp-action="Order" class="btn btn-primary">
+                <i class="bi bi-bag-check"></i> &nbsp; Order
+            </a>
+        </div>
+    </div>
+</div>

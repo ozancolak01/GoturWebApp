@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Orders";
+}
+@using GoturWebApp.Controllers
+@using GoturWebApp.Models.ViewModels
+@model IEnumerable<ViewModelOrderDetails>  
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Details of Your Order</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Basket" asp-action="Basket" class="btn btn-primary">
+                <i class="bi bi-bag-check"></i> &nbsp; Place an Order
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+
+    <table class = "table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model)
+            {
+                <tr>
+                    <td class="text-center" width="50%">
+                        @obj.ProductName
+                    </td>
+                    <td class="text-center" width="30%">
+                        @obj.ProductPrice
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
